@@ -30,7 +30,6 @@ public class activateTestControllerYay extends LinearOpMode {
     public CRServo testServoCR2;
     public boolean canChange = false;
     public boolean canChangeth = false;
-
     public void runOpMode() {
 
         testMotor0 = hardwareMap.get(DcMotor.class, "0");
@@ -69,7 +68,8 @@ public class activateTestControllerYay extends LinearOpMode {
             testServoCR1.setPower(1);
             testServoCR2.setPower(1);
             sleep(100);
-        }else if(canChange==false && gamepad1.right_bumper){
+        }
+        if(canChange==false && gamepad1.right_bumper){
             canChange = true;
             testServoCR1.setPower(0);
             testServoCR2.setPower(0);
@@ -80,7 +80,8 @@ public class activateTestControllerYay extends LinearOpMode {
             testServoCR1.setPower(-1);
             testServoCR2.setPower(-1);
             sleep(100);
-        }else if(canChangeth==false && gamepad1.left_bumper){
+        }
+        if(canChangeth==false && gamepad1.left_bumper){
             canChangeth = true;
             testServoCR1.setPower(0);
             testServoCR2.setPower(0);
