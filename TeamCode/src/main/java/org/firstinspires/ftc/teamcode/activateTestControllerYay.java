@@ -30,6 +30,9 @@ public class activateTestControllerYay extends LinearOpMode {
     public CRServo testServoCR2;
     public boolean canChange = false;
     public boolean canChangeth = false;
+
+
+    @Override
     public void runOpMode() {
 
         testMotor0 = hardwareMap.get(DcMotor.class, "0");
@@ -42,60 +45,63 @@ public class activateTestControllerYay extends LinearOpMode {
         testServoCR1 = hardwareMap.get(CRServo.class, "ServoCR2");
         testServoCR2 = hardwareMap.get(CRServo.class, "ServoCR3");
 
-        //digital test motors
-        if(gamepad1.a){
-            testMotor0.setPower(1);
-        } else{
-            testMotor0.setPower(0);
-        }
-        if(gamepad1.b){
-            testMotor1.setPower(1);
-        } else{
-            testMotor1.setPower(0);
-        }
+        waitForStart();
+        while (opModeIsActive()){
+            //digital test motors
+            if(gamepad1.a){
+                testMotor0.setPower(1);
+            } else{
+                testMotor0.setPower(0);
+            }
+            if(gamepad1.b){
+                testMotor1.setPower(1);
+            } else{
+                testMotor1.setPower(0);
+            }
 
-        //analog test motors
-        if(gamepad1.right_trigger > 0.1){
-            testMotor2.setPower(gamepad1.right_trigger);
-        }
-        if(gamepad1.left_trigger > 0.1){
-            testMotor3.setPower(gamepad1.left_trigger);
-        }
+            //analog test motors
+            if(gamepad1.right_trigger > 0.1){
+                testMotor2.setPower(gamepad1.right_trigger);
+            }
+            if(gamepad1.left_trigger > 0.1){
+                testMotor3.setPower(gamepad1.left_trigger);
+            }
 
-        //Test CRServo things :3
-        if(canChange==true && gamepad1.right_bumper){
-            canChange = false;
-            testServoCR1.setPower(1);
-            testServoCR2.setPower(1);
-            sleep(100);
-        }
-        if(canChange==false && gamepad1.right_bumper){
-            canChange = true;
-            testServoCR1.setPower(0);
-            testServoCR2.setPower(0);
-            sleep(100);
-        }
-        if(canChangeth==true && gamepad1.left_bumper){
-            canChangeth = false;
-            testServoCR1.setPower(-1);
-            testServoCR2.setPower(-1);
-            sleep(100);
-        }
-        if(canChangeth==false && gamepad1.left_bumper){
-            canChangeth = true;
-            testServoCR1.setPower(0);
-            testServoCR2.setPower(0);
-            sleep(100);
-        }
+            //Test CRServo things :3
+            if(canChange==true && gamepad1.right_bumper){
+                canChange = false;
+                testServoCR1.setPower(1);
+                testServoCR2.setPower(1);
+                sleep(100);
+            }
+            if(canChange==false && gamepad1.right_bumper){
+                canChange = true;
+                testServoCR1.setPower(0);
+                testServoCR2.setPower(0);
+                sleep(100);
+            }
+            if(canChangeth==true && gamepad1.left_bumper){
+                canChangeth = false;
+                testServoCR1.setPower(-1);
+                testServoCR2.setPower(-1);
+                sleep(100);
+            }
+            if(canChangeth==false && gamepad1.left_bumper){
+                canChangeth = true;
+                testServoCR1.setPower(0);
+                testServoCR2.setPower(0);
+                sleep(100);
+            }
 
-        //Test Servos yey :3
-        if(gamepad1.x){
-            testServo1.setPosition(1);
-            testServo2.setPosition(1);
-        }
-        if(gamepad1.y){
-            testServo1.setPosition(0);
-            testServo2.setPosition(0);
+            //Test Servos yey :3
+            if(gamepad1.x){
+                testServo1.setPosition(1);
+                testServo2.setPosition(1);
+            }
+            if(gamepad1.y) {
+                testServo1.setPosition(0);
+                testServo2.setPosition(0);
+            }
         }
     }
 }
